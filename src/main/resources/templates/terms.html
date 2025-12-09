@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Términos y Condiciones</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+               min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+                     width: 100%; max-width: 700px; }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; }
+        .terms-box { border: 1px solid #ddd; padding: 20px; border-radius: 5px; max-height: 400px; 
+                     overflow-y: auto; background: #f9f9f9; margin-bottom: 20px; }
+        .terms-box h3 { color: #667eea; margin-top: 15px; margin-bottom: 10px; }
+        .terms-box p { line-height: 1.6; color: #555; margin-bottom: 10px; text-align: justify; }
+        .checkbox-group { display: flex; align-items: center; margin-bottom: 20px; padding: 15px; 
+                         background: #f0f0f0; border-radius: 5px; }
+        .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 10px; cursor: pointer; }
+        .checkbox-group label { cursor: pointer; color: #333; font-weight: bold; }
+        button { width: 100%; padding: 12px; background: #667eea; color: white; border: none; 
+                 border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        button:hover:not(:disabled) { background: #5568d3; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Términos y Condiciones</h2>
+        
+        <div class="terms-box">
+            <h3>1. Aceptación de los Términos</h3>
+            <p>Al acceder y utilizar este servicio, usted acepta estar sujeto a estos términos y condiciones de uso, 
+            todas las leyes y regulaciones aplicables, y acepta que es responsable del cumplimiento de las leyes locales aplicables.</p>
+            
+            <h3>2. Uso del Servicio</h3>
+            <p>Este servicio está destinado únicamente para uso personal y no comercial. No puede utilizar este servicio 
+            para ningún propósito ilegal o no autorizado. Debe cumplir con todas las leyes locales, estatales, 
+            nacionales e internacionales aplicables.</p>
+            
+            <h3>3. Privacidad y Protección de Datos</h3>
+            <p>Nos comprometemos a proteger su información personal. Los datos recopilados serán utilizados únicamente 
+            para los fines establecidos en nuestra política de privacidad. No compartiremos su información con terceros 
+            sin su consentimiento explícito, excepto cuando sea requerido por ley.</p>
+            
+            <h3>4. Cuenta de Usuario</h3>
+            <p>Usted es responsable de mantener la confidencialidad de su cuenta y contraseña. Acepta notificarnos 
+            inmediatamente sobre cualquier uso no autorizado de su cuenta. No seremos responsables de ninguna pérdida 
+            que pueda incurrir como resultado del uso no autorizado de su cuenta.</p>
+            
+            <h3>5. Propiedad Intelectual</h3>
+            <p>Todo el contenido incluido en este servicio, como texto, gráficos, logos, imágenes y software, 
+            es propiedad de la empresa o sus proveedores de contenido y está protegido por las leyes de propiedad intelectual.</p>
+            
+            <h3>6. Limitación de Responsabilidad</h3>
+            <p>En ningún caso seremos responsables de daños especiales, incidentales, indirectos o consecuentes 
+            relacionados con el uso o la imposibilidad de usar el servicio.</p>
+            
+            <h3>7. Modificaciones</h3>
+            <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones 
+            entrarán en vigor inmediatamente después de su publicación en el servicio.</p>
+        </div>
+
+        <form th:action="@{/auth/terms/accept}" method="post">
+            <input type="hidden" name="userId" th:value="${userId}">
+            <div class="checkbox-group">
+                <input type="checkbox" id="acceptTerms" required onchange="document.getElementById('submitBtn').disabled = !this.checked">
+                <label for="acceptTerms">He leído y acepto los términos y condiciones</label>
+            </div>
+            <button type="submit" id="submitBtn" disabled>Continuar</button>
+        </form>
+    </div>
+</body>
+</html>

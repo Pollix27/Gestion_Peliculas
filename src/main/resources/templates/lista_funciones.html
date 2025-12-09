@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/button-colors.css}" />
+    <title>Lista de Funciones | Pelisplus 🎬</title>
+</head>
+<body class="subpage">
+
+<!-- Header -->
+<header id="header">
+    <div class="logo">Pelisplus 🎬</div>
+</header>
+
+<!-- Section One -->
+<section id="One" class="wrapper style3">
+    <div class="inner">
+        <header class="align-center">
+            <p>UACM San Lorenzo Tezonco</p>
+            <p>Pollix27 - Javii - Rene - Richard</p>
+            <h2>Lista de Funciones</h2>
+        </header>
+    </div>
+</section>
+
+<div class="inner">
+    <table border="1" style="width:90%; margin: 20px auto;">
+        <tr>
+            <th>Película</th>
+            <th>Sala</th>
+            <th>Fecha</th>
+            <th>Horario</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="funcion : ${funciones}">
+            <td th:text="${funcion.p.titulo}"></td>
+            <td th:text="${funcion.s.nombre}"></td>
+            <td th:text="${funcion.fecha}"></td>
+            <td th:text="${#temporals.format(funcion.horario, 'HH:mm')}"></td>
+            <td>
+                <a th:href="@{/editarFuncion/{id}(id=${funcion.id})}" class="button btn-warning">Editar</a>
+                <a th:href="@{/eliminarFuncion/{id}(id=${funcion.id})}" class="button btn-danger" 
+                   onclick="return confirm('¿Estás seguro de que quieres eliminar esta función?')">Eliminar</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(funciones)}">
+            <td colspan="5" style="text-align: center;">No hay funciones programadas</td>
+        </tr>
+    </table>
+    
+    <div style="text-align: center; margin: 20px;">
+        <a th:href="@{/}" class="button btn-secondary">Volver al Inicio</a>
+        <a th:href="@{/formularioF}" class="button btn-primary">Agregar Función</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <ul class="icons">
+            <li><a href="https://x.com/pelisplus" class="icon fa-twitter"><span class="label">X</span></a></li>
+            <li><a href="https://www.facebook.com/pelisplusmx/?locale=es_LA" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/pelisplusoficial/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://pelisplus.city/privacy-policy/" class="icon fa-envelope-o"><span class="label">Terminos y condiciones</span></a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        &copy; NGINX. All rights reserved
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/assets/js/skel.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
+</html>

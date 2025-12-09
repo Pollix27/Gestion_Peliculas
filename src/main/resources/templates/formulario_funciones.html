@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/button-colors.css}" />
+    <title>Agregar una función | Pelisplus 🎬</title>
+</head>
+<body>
+
+<header id="header">
+    <div class="logo">Pelisplus 🎬</div>
+</header>
+
+<section id="One" class="wrapper style3">
+    <div class="inner">
+        <header class="align-center">
+            <p>UACM San Lorenzo Tezonco</p>
+            <p>Pollix27 - Javii - Rene - Richard</p>
+            <h2>Sistema de Gestión de Peliculas</h2>
+        </header>
+    </div>
+</section>
+
+<h2> Agrega una función </h2>
+<form action="#" th:action="${funcion.id != 0} ? @{/editarFuncion/{id}(id=${funcion.id})} : @{/formularioF}" th:object="${funcion}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="salas">Selecciona una sala</label></td>
+    <td><select id="salas" th:field="*{s}"></td>
+    <option value="">---sala---</option>
+    <option th:each="sala:${salas}"
+            th:value="${sala}"
+            th:text="${sala.nombre}">
+    </option>
+    </select>
+    <table>
+        <tr>
+        <td><label for="peliculas">Selecciona una pelicula</label>
+        <select id="peliculas" th:field="*{p}">
+            <option value="">---pelicula---</option>
+            <option th:each="peli:${peliculas}"
+                    th:value="${peli}"
+                    th:text="${peli.titulo}">
+            </option>
+        </select> </td>
+        </tr>
+  <tr>     <td>
+            <label for="fecha">Fecha:</label> </td>
+            <td><input type="date" id="fecha" th:field="*{fecha}" /></td>
+      <td th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}" Error FEcha </td>
+        </tr>
+        <tr>
+            <td><label for="hora">Hora:</label></td>
+            <td><input type="time" id="hora" th:field="*{horario}" /></td>
+            <td th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}" Error Horario </td>
+        </tr>
+    </table>
+    <div style="text-align: center; margin: 20px;">
+        <a th:href="@{/}" class="button btn-secondary">Regresar</a>
+        <button type="submit" class="btn-success">Listo</button>
+    </div>
+</form>
+
+
+<footer id="footer">
+
+    <div class="container">
+        <ul class="icons">
+            <li><a href="https://x.com/pelisplus" class="icon fa-twitter"><span class="label">X</span></a></li>
+            <li><a href="https://www.facebook.com/pelisplusmx/?locale=es_LA" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/pelisplusoficial/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://pelisplus.city/privacy-policy/" class="icon fa-envelope-o"><span class="label">Terminos y condiciones</span></a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        &copy; NGINX. All rights reserved
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/assets/js/skel.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

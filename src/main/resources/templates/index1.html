@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <title>Inicio | Pelisplus 🎬</title>
+</head>
+<body>
+
+<header id="header">
+    <div class="logo">Pelisplus 🎬</div>
+</header>
+
+<section id="One" class="wrapper style3">
+    <div class="inner">
+        <header class="align-center">
+            <p>UACM San Lorenzo Tezonco</p>
+            <p>Pollix27 - Javii - Rene - Richard</p>
+            <h2>Sistema de Gestión de Peliculas</h2>
+        </header>
+    </div>
+</section>
+<h2> Menú </h2>
+
+<ul>
+    <li><a th:href="@{/ejemploPag}"> - 📋 Lista de Peliculas</a></li>
+    <li><a th:href="@{/verFunciones}"> - 🎭 Ver Funciones</a></li>
+    <li><a th:href="@{/formularioA}"> - 🎬 Agregar una Pelicula</a></li>
+    <li><a th:href="@{/formularioS}"> - 🛋️ Agregar una Sala</a></li>
+    <li><a th:href="@{/formularioF}"> - 📽️ Agregar una Función</a></li>
+</ul>
+
+<footer id="footer">
+
+    <div class="container">
+        <ul class="icons">
+            <li><a href="https://x.com/pelisplus" class="icon fa-twitter"><span class="label">X</span></a></li>
+            <li><a href="https://www.facebook.com/pelisplusmx/?locale=es_LA" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/pelisplusoficial/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://pelisplus.city/privacy-policy/" class="icon fa-envelope-o"><span class="label">Terminos y condiciones</span></a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        &copy; NGINX. All rights reserved
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/assets/js/skel.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
+</html>
