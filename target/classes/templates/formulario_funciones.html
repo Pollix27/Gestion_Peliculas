@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/button-colors.css}" />
-    <title>Agregar una Pelicula | Pelisplus 🎬</title>
+    <title>Agregar una función | Pelisplus 🎬</title>
 </head>
 <body>
 
 <header id="header">
     <div class="logo">Pelisplus 🎬</div>
-    <form th:action="@{/logout}" method="post" style="position: absolute; top: 10px; right: 20px;">
-        <button type="submit" class="button btn-danger">Cerrar Sesión</button>
-    </form>
 </header>
 
 <section id="One" class="wrapper style3">
@@ -25,33 +22,46 @@
     </div>
 </section>
 
-<h2> Agregar Pelicula </h2>
-
-   <form action="#" th:action="${pelicula.id != 0} ? @{/editarPelicula/{id}(id=${pelicula.id})} : @{/formularioA}" th:object="${pelicula}" method="post">
+<h2> Agrega una función </h2>
+<form action="#" th:action="${funcion.id != 0} ? @{/editarFuncion/{id}(id=${funcion.id})} : @{/formularioF}" th:object="${funcion}" method="post">
     <input type="hidden" th:field="*{id}" />
 
-           <table>
-               <tr>
-                   <td>Titulo:</td>
-                   <td><input type="text" th:field="*{titulo}" /></td>
-                   <td th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">Errror Titulo </td>
-               </tr>
-               <tr>
-                   <td>Genero:</td>
-                   <td><input type="text" th:field="*{tipo}" /></td>
-                   <td th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Error Tipo/td>
-               </tr>
-               <tr>
-                   <td>Duración:</td>
-                   <td><input type="number" th:field="*{duracion}" /></td>
-                   <td th:if="${#fields.hasErrors('duracion')}" th:errors="*{duracion}">Error Tipo/td>
-               </tr>
-           </table>
-       <div style="text-align: center; margin: 20px;">
-           <a th:href="@{/}" class="button btn-secondary">Regresar</a>
-           <button type="submit" class="btn-success">Listo</button>
-       </div>
-       </form>
+    <label for="salas">Selecciona una sala</label></td>
+    <td><select id="salas" th:field="*{s}"></td>
+    <option value="">---sala---</option>
+    <option th:each="sala:${salas}"
+            th:value="${sala}"
+            th:text="${sala.nombre}">
+    </option>
+    </select>
+    <table>
+        <tr>
+        <td><label for="peliculas">Selecciona una pelicula</label>
+        <select id="peliculas" th:field="*{p}">
+            <option value="">---pelicula---</option>
+            <option th:each="peli:${peliculas}"
+                    th:value="${peli}"
+                    th:text="${peli.titulo}">
+            </option>
+        </select> </td>
+        </tr>
+  <tr>     <td>
+            <label for="fecha">Fecha:</label> </td>
+            <td><input type="date" id="fecha" th:field="*{fecha}" /></td>
+      <td th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}" Error FEcha </td>
+        </tr>
+        <tr>
+            <td><label for="hora">Hora:</label></td>
+            <td><input type="time" id="hora" th:field="*{horario}" /></td>
+            <td th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}" Error Horario </td>
+        </tr>
+    </table>
+    <div style="text-align: center; margin: 20px;">
+        <a th:href="@{/}" class="button btn-secondary">Regresar</a>
+        <button type="submit" class="btn-success">Listo</button>
+    </div>
+</form>
+
 
 <footer id="footer">
 
@@ -74,6 +84,5 @@
 <script th:src="@{/assets/js/skel.min.js}"></script>
 <script th:src="@{/assets/js/util.js}"></script>
 <script th:src="@{/assets/js/main.js}"></script>
-
- </body>
+</body>
 </html>
